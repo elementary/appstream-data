@@ -1,0 +1,8 @@
+ArchiveRoot: /home/noelco/elementary-mirror/mirror/ppa.launchpad.net/elementary-os/daily/ubuntu/
+MediaBaseUrl: http://elementary.io/media/
+Suites:
+  xenial:
+    components:
+      - main
+    architectures:
+      - amd64

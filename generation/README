@@ -1,0 +1,10 @@
+To refresh it:
+
+1. Create a mirror folder
+2. Put the mirror.list inside, modify it according to your configuration
+3. Run apt-mirror ./mirror.list
+4. Generate the Contents-amd64.gz with `apt-ftparchive contents ./ > Contents-amd64 && gzip -f Contents-amd64`
+5. Put the Contents-amd64.gz in mirror/…/dists/xenial/main/
+6. Run `dep11-generator process . xenial`
+7. Enjoy!
+

@@ -1,0 +1,45 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+
+Files: pantheon-data/*
+Copyright: (c) The copyright holders of the software in Debian and elementary
+License: various
+ These files are collected from various packages in the elementary archive.
+ Please take a look at the copyright file of the package to find out the exact license.
+ .
+ To find the right package the data originates from, take a look at the compressed YAML
+ file and look for the "Packages:" tag.
+ .
+ Some of the YAML documents even ship with a "ProjectLicense" field, identifying the
+ license of the project.
+
+Files: pantheon-data/*/icons/*
+Copyright: (c) The copyright holders of the software in Debian and elementary
+License: mixed
+ These files are collected from various packages in the elementary archive.
+ Please take a look at the copyright file of the package to find out the exact license.
+ .
+ The right package name the icon originates from is encoded in its filename.
+ Just take the string before the first underscore as package-name,
+ e.g. for the "jovie_speak.png" file, the package name is "jovie".
+
+License: GPL-2+
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+
+Files: ./debian/*
+ README
+Copyright: 2014-2015, Matthias Klumpp <mak@debian.org>
+License: GPL-2+

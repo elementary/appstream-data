@@ -1,0 +1,46 @@
+Source: appstream-data-pantheon
+Section: misc
+Priority: optional
+Maintainer: Cody Garger <cody@elementary.io>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.6
+
+Package: appstream-data-pantheon
+Architecture: all
+Depends: ${misc:Depends}
+Recommends: appstream,
+            appstream-data-pantheon-icons
+Description: AppStream data for Pantheon
+ This package contains metadata used by component-aware software
+ installers and software-centers (such as GNOME-Software, Apper and
+ KDE Discover) to display extended information about the software
+ available for Pantheon.
+ .
+ This package contains the DEP-11 metadata for "main".
+
+Package: appstream-data-pantheon-icons
+Architecture: all
+Depends: appstream-data-pantheon,
+         ${misc:Depends}
+Suggests: appstream-data-pantheon-icons-hidpi
+Description: Icons for AppStream data in Pantheon
+ This package contains metadata used by component-aware software
+ installers and software-centers (such as GNOME-Software, Apper and
+ KDE Discover) to display extended information about the software
+ available for Pantheon.
+ .
+ This package contains the icons for software in "main",
+ which are accompanying the DEP-11 metadata.
+
+Package: appstream-data-pantheon-icons-hidpi
+Architecture: all
+Depends: appstream-data-pantheon-icons,
+         ${misc:Depends}
+Description: HiDPI icons for AppStream data in Pantheon
+ This package contains metadata used by component-aware software
+ installers and software-centers (such as GNOME-Software, Apper and
+ KDE Discover) to display extended information about the software
+ available for Pantheon.
+ .
+ This package contains application icons suitable for HiDPI displays
+ for software in "main" which complement the existing icons.

@@ -1,0 +1,5 @@
+appstream-data-pantheon (0.3.0) unreleased; urgency=medium
+
+  * Initial release for Pantheon
+
+ -- Corentin Noël <corentin@elementary.io>  Thu, 10 Dec 2015 23:12:05 +0200
