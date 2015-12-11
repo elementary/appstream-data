@@ -2,6 +2,7 @@ ArchiveRoot: /home/noelco/elementary-mirror/mirror/ppa.launchpad.net/elementary-
 MediaBaseUrl: http://elementary.io/media/
 Suites:
   xenial:
+    useIconTheme: elementary
     components:
       - main
     architectures:
