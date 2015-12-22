@@ -1,5 +1,6 @@
 ArchiveRoot: /home/noelco/elementary-mirror/mirror/ppa.launchpad.net/elementary-os/daily/ubuntu/
 MediaBaseUrl: http://elementary.io/media/
+HtmlBaseUrl: http://appcenter.noel.tf/appstream/
 Suites:
   xenial:
     useIconTheme: elementary
