@@ -1,7 +1,6 @@
 = AppStream data for Pantheon =
 
-The metadata and icons are generated from the archive using code
-found at
- https://github.com/ximion/appstream-dep11
+Copy the required data from http://packages.elementary.io/daily/dists/xenial/main/appstream/ in the right folders
 
-For more information, see the generation folder.
+bzr push
+That's it.
