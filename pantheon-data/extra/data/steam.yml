@@ -1,0 +1,33 @@
+Type: desktop-app
+ID: steam.desktop
+Package: steam
+Name:
+  C: Steam
+Summary:
+  C: Valve's Steam digital software delivery system
+Description:
+  C: >-
+    <p>Steam is a software content delivery system developed by Valve software.
+      There is some free software available, but for the most part the content delivered is non-free.</p>
+ProjectLicense: CC0-1.0
+Categories:
+- Game
+Keywords:
+  C:
+  - Steam
+  - Games
+Url:
+  homepage: http://www.steampowered.com
+Icon:
+  cached:
+  - name: steam.png
+    width: 64
+    height: 64
+  - name: steam.png
+    width: 128
+    height: 128
+Provides:
+  mimetypes:
+  - x-scheme-handler/steam
+  binaries:
+  - steam
