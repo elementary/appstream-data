@@ -1,6 +1,5 @@
 = AppStream data for Pantheon =
 
-Copy the required data from http://packages.elementary.io/daily/dists/xenial/main/appstream/ in the right folders
-
-bzr push
+Run the `grab.sh` script.
+`bzr push`.
 That's it.

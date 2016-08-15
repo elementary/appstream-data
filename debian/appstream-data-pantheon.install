@@ -1,1 +1,2 @@
 pantheon-data/main/*.gz usr/share/app-info/yaml
+pantheon-data/extra/*.gz usr/share/app-info/yaml
