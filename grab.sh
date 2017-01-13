@@ -35,9 +35,9 @@ mkdir -p "$TEMP/package/pantheon-data/$SECT/icons/128x128"
 mkdir -p "$TEMP/package/pantheon-data/$SECT/icons/64x64"
 
 # Start download the data from elementary's mirrored repo
-wget "$URL/dists/$DIST/$SECT/appstream/Components-amd64.yml.gz" -O "$TEMP/components.yml.gz"
-wget "$URL/dists/$DIST/$SECT/appstream/icons-128x128.tar.gz" -O "$TEMP/icons-128.tar.gz"
-wget "$URL/dists/$DIST/$SECT/appstream/icons-64x64.tar.gz" -O "$TEMP/icons-64.tar.gz"
+wget "$URL/dists/$DIST/$SECT/dep11/Components-amd64.yml.gz" -O "$TEMP/components.yml.gz"
+wget "$URL/dists/$DIST/$SECT/dep11/icons-128x128.tar.gz" -O "$TEMP/icons-128.tar.gz"
+wget "$URL/dists/$DIST/$SECT/dep11/icons-64x64.tar.gz" -O "$TEMP/icons-64.tar.gz"
 
 # Unpack all the data and put it where it needs to go
 mv "$TEMP/components.yml.gz" "$TEMP/package/pantheon-data/$SECT/pantheon_$DIST-${SECT}_${ARCH}.yml.gz"
