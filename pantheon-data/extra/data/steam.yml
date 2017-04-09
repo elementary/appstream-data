@@ -1,14 +1,15 @@
-Type: desktop-app
+Type: desktop-application
 ID: steam.desktop
 Package: steam
 Name:
   C: Steam
 Summary:
-  C: Valve's Steam digital software delivery system
+  C: The Ultimate Entertainment Platform
 Description:
   C: >-
-    <p>Steam is a software content delivery system developed by Valve software.
-      There is some free software available, but for the most part the content delivered is non-free.</p>
+    <p>We have thousands of games from Action to Indie and everything in-between. Enjoy exclusive deals, automatic game updates and other great perks.</p>
+DeveloperName:
+  C: Valve
 ProjectLicense: CC0-1.0
 Categories:
 - Game
@@ -18,6 +19,7 @@ Keywords:
   - Games
 Url:
   homepage: http://www.steampowered.com
+  help: https://help.steampowered.com
 Icon:
   cached:
   - name: steam.png
