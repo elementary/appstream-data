@@ -45,7 +45,7 @@ tar -xf "$TEMP/icons-128.tar.gz" -C "$TEMP/package/pantheon-data/$SECT/icons/128
 tar -xf "$TEMP/icons-64.tar.gz" -C "$TEMP/package/pantheon-data/$SECT/icons/64x64"
 
 # At this point we build the extra package
-touch "$TEMP/pantheon_xenial-${EXTR}_${ARCH}.yml"
+touch "$TEMP/pantheon_$DIST-${EXTR}_${ARCH}.yml"
 
 # Construct the header
 {
@@ -57,15 +57,15 @@ touch "$TEMP/pantheon_xenial-${EXTR}_${ARCH}.yml"
     echo "MediaBaseUrl: https://appstream.elementary.io/daily/media/pool"
     echo "Priority: 13"
     echo "Time: $DATE"
-} > "$TEMP/pantheon_xenial-${EXTR}_${ARCH}.yml"
+} > "$TEMP/pantheon_$DIST-${EXTR}_${ARCH}.yml"
 
 # Iterate all the files
 for file in $EXTR_FILES; do
-    echo "---" >> "$TEMP/pantheon_xenial-${EXTR}_${ARCH}.yml"
-    cat "$file" >> "$TEMP/pantheon_xenial-${EXTR}_${ARCH}.yml"
+    echo "---" >> "$TEMP/pantheon_$DIST-${EXTR}_${ARCH}.yml"
+    cat "$file" >> "$TEMP/pantheon_$DIST-${EXTR}_${ARCH}.yml"
 done
 
 # Compress the yml file to the expected gz file
-gzip "$TEMP/pantheon_xenial-${EXTR}_${ARCH}.yml"
+gzip "$TEMP/pantheon_$DIST-${EXTR}_${ARCH}.yml"
 # And move it in place
-mv "$TEMP/pantheon_xenial-${EXTR}_${ARCH}.yml.gz" "$TEMP/package/pantheon-data/$EXTR/pantheon_$DIST-${EXTR}_${ARCH}.yml.gz"
+mv "$TEMP/pantheon_$DIST-${EXTR}_${ARCH}.yml.gz" "$TEMP/package/pantheon-data/$EXTR/pantheon_$DIST-${EXTR}_${ARCH}.yml.gz"
