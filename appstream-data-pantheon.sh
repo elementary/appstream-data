@@ -4,7 +4,6 @@
 set -ex
 
 TEMP="$PWD"
-LAUNCH="~elementary-os/elementaryos/appstream-data-pantheon"
 
 # TODO: switch url to https once we get certifications working
 URL="http://packages.elementary.io/daily"
@@ -16,20 +15,6 @@ DATE=$(date -u +%Y%m%dT%H%M%S)
 
 EXTR_FILES="$TEMP/pantheon-data/${EXTR}/data/*"
 
-# Stop the build if we fail on something
-#set -e
-
-# Make sure we have a clean workspace
-#mkdir -p "$TEMP"
-#rm -rf "${TEMP:?}/"*
-
-# Grab the template
-#bzr branch "lp:$LAUNCH" "$TEMP/package"
-# But remove any of the old data
-#rm -rf "$TEMP/package/pantheon-data/*"
-# And the rest of the stuff we don't want packaged
-#rm -rf "$TEMP/package/.bzr"
-#rm -rf "$TEMP/package/README"
 # Create the repository section folder to place all the data in
 mkdir -p "$TEMP/pantheon-data/$SECT"
 mkdir -p "$TEMP/pantheon-data/$SECT/icons/128x128"
