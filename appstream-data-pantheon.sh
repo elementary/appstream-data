@@ -4,7 +4,8 @@
 set -ex
 
 # TODO: switch url to https once we get certifications working
-URL="http://packages.elementary.io/daily"
+CHANNEL="daily"
+URL="http://packages.elementary.io/$CHANNEL"
 DIST=$(lsb_release -csu)||DIST=$(lsb_release -cs)
 SECT="main"
 EXTR="extra"
