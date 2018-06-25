@@ -55,4 +55,4 @@ gzip "$PWD/pantheon_$DIST-${EXTR}_${ARCH}.yml"
 # And move it in place
 mv "$PWD/pantheon_$DIST-${EXTR}_${ARCH}.yml.gz" "$PWD/pantheon-data/$EXTR/pantheon_$DIST-${EXTR}_${ARCH}.yml.gz"
 
-rm "$PWD"/*.gz "$PWD"/*.yml
+rm -f "$PWD"/*.gz "$PWD"/*.yml
