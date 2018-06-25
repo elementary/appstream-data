@@ -2,7 +2,7 @@ Source: appstream-data-pantheon
 Section: misc
 Priority: optional
 Maintainer: Cody Garver <cody@elementary.io>
-Build-Depends: debhelper (>= 9), meson
+Build-Depends: debhelper (>= 9), meson, wget
 Standards-Version: 3.9.6
 
 Package: appstream-data-pantheon
