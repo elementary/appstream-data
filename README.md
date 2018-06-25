@@ -1,5 +1,3 @@
-= AppStream data for Pantheon =
+# AppStream data for Pantheon
 
-Run the `grab.sh` script.
-`bzr push`.
-That's it.
+This package automatically populates when the Debian package is built. To refresh the package, simply bump the changelog and the build system takes care of the rest.
