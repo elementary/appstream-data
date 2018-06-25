@@ -5,7 +5,7 @@ set -ex
 
 # TODO: switch url to https once we get certifications working
 URL="http://packages.elementary.io/daily"
-DIST="xenial"
+DIST=$(lsb_release -csu)||DIST=$(lsb_release -cs)
 SECT="main"
 EXTR="extra"
 ARCH="amd64" # All appstream data _should_ be the same, so this is just for looks
