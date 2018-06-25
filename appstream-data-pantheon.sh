@@ -1,8 +1,9 @@
 #!/bin/sh
 # Creates a folder full of pantheon appstream data ready for debian packaging
 # Requires bzr, wget, and tar
+set -ex
 
-TEMP="/tmp/appstream-package"
+TEMP="$PWD"
 LAUNCH="~elementary-os/elementaryos/appstream-data-pantheon"
 
 # TODO: switch url to https once we get certifications working
@@ -13,26 +14,26 @@ EXTR="extra"
 ARCH="amd64" # All appstream data _should_ be the same, so this is just for looks
 DATE=$(date -u +%Y%m%dT%H%M%S)
 
-EXTR_FILES="$TEMP/package/pantheon-data/${EXTR}/data/*"
+EXTR_FILES="$TEMP/pantheon-data/${EXTR}/data/*"
 
 # Stop the build if we fail on something
-set -e
+#set -e
 
 # Make sure we have a clean workspace
-mkdir -p "$TEMP"
-rm -rf "${TEMP:?}/"*
+#mkdir -p "$TEMP"
+#rm -rf "${TEMP:?}/"*
 
 # Grab the template
-bzr branch "lp:$LAUNCH" "$TEMP/package"
+#bzr branch "lp:$LAUNCH" "$TEMP/package"
 # But remove any of the old data
-rm -rf "$TEMP/package/pantheon-data/*"
+#rm -rf "$TEMP/package/pantheon-data/*"
 # And the rest of the stuff we don't want packaged
-rm -rf "$TEMP/package/.bzr"
-rm -rf "$TEMP/package/README"
+#rm -rf "$TEMP/package/.bzr"
+#rm -rf "$TEMP/package/README"
 # Create the repository section folder to place all the data in
-mkdir -p "$TEMP/package/pantheon-data/$SECT"
-mkdir -p "$TEMP/package/pantheon-data/$SECT/icons/128x128"
-mkdir -p "$TEMP/package/pantheon-data/$SECT/icons/64x64"
+mkdir -p "$TEMP/pantheon-data/$SECT"
+mkdir -p "$TEMP/pantheon-data/$SECT/icons/128x128"
+mkdir -p "$TEMP/pantheon-data/$SECT/icons/64x64"
 
 # Start download the data from elementary's mirrored repo
 wget "$URL/dists/$DIST/$SECT/dep11/Components-amd64.yml.gz" -O "$TEMP/components.yml.gz"
@@ -40,9 +41,9 @@ wget "$URL/dists/$DIST/$SECT/dep11/icons-128x128.tar.gz" -O "$TEMP/icons-128.tar
 wget "$URL/dists/$DIST/$SECT/dep11/icons-64x64.tar.gz" -O "$TEMP/icons-64.tar.gz"
 
 # Unpack all the data and put it where it needs to go
-mv "$TEMP/components.yml.gz" "$TEMP/package/pantheon-data/$SECT/pantheon_$DIST-${SECT}_${ARCH}.yml.gz"
-tar -xf "$TEMP/icons-128.tar.gz" -C "$TEMP/package/pantheon-data/$SECT/icons/128x128"
-tar -xf "$TEMP/icons-64.tar.gz" -C "$TEMP/package/pantheon-data/$SECT/icons/64x64"
+mv "$TEMP/components.yml.gz" "$TEMP/pantheon-data/$SECT/pantheon_$DIST-${SECT}_${ARCH}.yml.gz"
+tar -xf "$TEMP/icons-128.tar.gz" -C "$TEMP/pantheon-data/$SECT/icons/128x128"
+tar -xf "$TEMP/icons-64.tar.gz" -C "$TEMP/pantheon-data/$SECT/icons/64x64"
 
 # At this point we build the extra package
 touch "$TEMP/pantheon_$DIST-${EXTR}_${ARCH}.yml"
@@ -68,4 +69,6 @@ done
 # Compress the yml file to the expected gz file
 gzip "$TEMP/pantheon_$DIST-${EXTR}_${ARCH}.yml"
 # And move it in place
-mv "$TEMP/pantheon_$DIST-${EXTR}_${ARCH}.yml.gz" "$TEMP/package/pantheon-data/$EXTR/pantheon_$DIST-${EXTR}_${ARCH}.yml.gz"
+mv "$TEMP/pantheon_$DIST-${EXTR}_${ARCH}.yml.gz" "$TEMP/pantheon-data/$EXTR/pantheon_$DIST-${EXTR}_${ARCH}.yml.gz"
+
+rm "$TEMP"/*.gz "$TEMP"/*.yml
