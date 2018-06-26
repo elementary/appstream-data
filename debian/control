@@ -9,7 +9,8 @@ Package: appstream-data-pantheon
 Architecture: all
 Depends: ${misc:Depends}
 Recommends: appstream,
-            appstream-data-pantheon-icons
+            appstream-data-pantheon-icons,
+            appstream-data-pantheon-icons-hidpi
 Description: AppStream data for Pantheon
  This package contains metadata used by component-aware software
  installers and software-centers (such as GNOME-Software, Apper and
