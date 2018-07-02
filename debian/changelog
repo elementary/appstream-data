@@ -1,3 +1,9 @@
+appstream-data-pantheon (5.0) bionic; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementary.io>  Mon, 02 Jul 2018 10:55:09 -0500
+
 appstream-data-pantheon (0.3.0) unreleased; urgency=medium
 
   * Initial release for Pantheon
