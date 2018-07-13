@@ -1,5 +1,5 @@
 Type: desktop-application
-ID: firefox.desktop
+ID: firefox
 Package: firefox
 Name:
   C: Firefox
