@@ -1,2 +1,4 @@
-pantheon-data/main/icons/64x64/* usr/share/app-info/icons/elementary-xenial-main/64x64/
-pantheon-data/extra/icons/64x64/* usr/share/app-info/icons/elementary-xenial-extra/64x64/
+pantheon-data/main/icons/64x64/* usr/share/app-info/icons/elementary-bionic-main/64x64/
+pantheon-data/extra/icons/64x64/* usr/share/app-info/icons/elementary-bionic-extra/64x64/
+pantheon-data/main/icons/128x128/* usr/share/app-info/icons/elementary-bionic-main/128x128/
+pantheon-data/extra/icons/128x128/* usr/share/app-info/icons/elementary-bionic-extra/128x128/
