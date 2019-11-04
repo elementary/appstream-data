@@ -5,8 +5,8 @@ set -e
 DIST="$1"
 CHANNEL="$2"
 
-apt update
-apt install -y wget elementary-icon-theme appstream-generator
+apt-get update
+apt-get install -y wget elementary-icon-theme appstream-generator
 mkdir -p /ppa_mirror
 
 # Recursively get anything that's not index.html* from the PPA
@@ -17,7 +17,7 @@ cd /workdir
 
 cat <<EOF > asgen-config.json
 {
-"ProjectName": "elementary",
+"ProjectName": "${CHANNEL}",
 "ArchiveRoot": "/ppa_mirror/ppa.launchpad.net/elementary-os/${CHANNEL}/ubuntu",
 "Backend": "debian",
 "Suites":
