@@ -17,7 +17,7 @@ cd /workdir
 
 cat <<EOF > asgen-config.json
 {
-"ProjectName": "${CHANNEL}",
+"ProjectName": "elementary-${CHANNEL}",
 "ArchiveRoot": "/ppa_mirror/ppa.launchpad.net/elementary-os/${CHANNEL}/ubuntu",
 "Backend": "debian",
 "Suites":
@@ -57,9 +57,9 @@ for f in export/data/${DIST}/main/icons-*; do
 
   # Add the extracted directory path to the debian install scripts (either HiDPI or not)
   if [[ $OUTDIR == *"@2" ]]; then
-    echo "pantheon-data/main/icons/${OUTDIR}/* usr/share/app-info/icons/elementary-${DIST}-main/$OUTDIR/" >> /repo/debian/appstream-data-pantheon-icons-hidpi.install
+    echo "pantheon-data/main/icons/${OUTDIR}/* usr/share/app-info/icons/elementary-${CHANNEL}-${DIST}-main/$OUTDIR/" >> /repo/debian/appstream-data-pantheon-icons-hidpi.install
   else
-    echo "pantheon-data/main/icons/${OUTDIR}/* usr/share/app-info/icons/elementary-${DIST}-main/$OUTDIR/" >> /repo/debian/appstream-data-pantheon-icons.install
+    echo "pantheon-data/main/icons/${OUTDIR}/* usr/share/app-info/icons/elementary-${CHANNEL}-${DIST}-main/$OUTDIR/" >> /repo/debian/appstream-data-pantheon-icons.install
   fi
 done
 
@@ -92,6 +92,3 @@ done
 
 # Compress the yml file to the expected gz file
 gzip /repo/pantheon-data/extra/pantheon_${DIST}-extra_amd64.yml
-
-
-

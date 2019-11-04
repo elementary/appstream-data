@@ -1,0 +1,25 @@
+name: Weekly
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 0 * * 3'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: elementary/docker:stable
+
+    steps:
+    - name: Clone build scripts
+      uses: actions/checkout@v1
+
+    - name: Build and upload distinst .iso
+      run: |
+        ln -s $GITHUB_WORKSPACE /repo
+        ./build.sh bionic stable
+
+
