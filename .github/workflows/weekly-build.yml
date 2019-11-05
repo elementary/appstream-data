@@ -1,11 +1,11 @@
 name: Weekly
 
 on:
+  schedule:
+    - cron:  '0 0 * * 3'
   push:
     branches:
       - master
-  schedule:
-    - cron: '0 0 * * 3'
 
 jobs:
   build:
@@ -14,12 +14,17 @@ jobs:
       image: elementary/docker:stable
 
     steps:
-    - name: Clone build scripts
+    - name: Clone repository
       uses: actions/checkout@v1
 
-    - name: Build and upload distinst .iso
+    - name: Build metadata
       run: |
         ln -s $GITHUB_WORKSPACE /repo
         ./build.sh bionic stable
 
+    - name: Push metadata
+      run: |
+        ./commit.sh
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
