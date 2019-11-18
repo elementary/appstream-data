@@ -31,22 +31,22 @@ git config --global user.name "$GIT_USER_NAME"
 echo "Git credentials configured."
 
 # get old yml contents
-OLD_CHANGES=$(find diff/main/ -type f -name "*.yml.gz")
+OLD_CHANGES=$(find diff/main -type f -name "*.yml.gz")
 UNZIPPED_OLD_CHANGES="${OLD_CHANGES%.*}"
-gunzip "$OLD_CHANGES"
+gunzip -c "$OLD_CHANGES" > "$UNZIPPED_OLD_CHANGES"
 sed -i.bak '/Time: /d' "$UNZIPPED_OLD_CHANGES"
+
 # get new yml contents
-NEW_CHANGES=$(find main/ -type f -name "*.yml.gz")
+NEW_CHANGES=$(find pantheon-data/main -type f -name "*.yml.gz")
 UNZIPPED_NEW_CHANGES="${NEW_CHANGES%.*}"
-gunzip "$NEW_CHANGES"
+gunzip -c "$NEW_CHANGES" > "$UNZIPPED_NEW_CHANGES"
 sed -i.bak '/Time: /d' "$UNZIPPED_NEW_CHANGES"
 
 # Check to see if there are changes to push
 if ! diff "$UNZIPPED_OLD_CHANGES" "$UNZIPPED_NEW_CHANGES"; then
   # there are changes! Clean up, then push the new metadata
   rm -rf "$UNZIPPED_NEW_CHANGES"
-  mv "$UNZIPPED_NEW_CHANGES".bak "$UNZIPPED_NEW_CHANGES"
-  gzip "$UNZIPPED_NEW_CHANGES"
+  rm -rf "$UNZIPPED_NEW_CHANGES".bak
   echo "Pushing new metadata to repository"
   git checkout master
   git add .
@@ -56,5 +56,3 @@ if ! diff "$UNZIPPED_OLD_CHANGES" "$UNZIPPED_NEW_CHANGES"; then
 else
   echo "no changes present, nothing to push"
 fi
-
-

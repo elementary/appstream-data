@@ -42,7 +42,7 @@ appstream-generator process "${DIST}"
 
 # Move the old main data to a backup location for diff checking
 mkdir -p /repo/diff/main
-cp /repo/pantheon-data/main/* /repo/diff/main
+cp -r /repo/pantheon-data/main/* /repo/diff/main
 
 # Clear out the rest of the old data
 rm -rf /repo/pantheon-data/main/*
