@@ -30,9 +30,31 @@ git config --global user.email "$GIT_USER_EMAIL"
 git config --global user.name "$GIT_USER_NAME"
 echo "Git credentials configured."
 
-echo "Pushing new metadata to repository"
-git checkout master
-git add .
-git commit -m "Automatic update of metadata"
-git push --set-upstream origin master
-echo "Push complete"
+# get old yml contents
+OLD_CHANGES=$(find diff/main/ -type f -name "*.yml.gz")
+UNZIPPED_OLD_CHANGES="${OLD_CHANGES%.*}"
+gunzip "$OLD_CHANGES"
+sed -i.bak '/Time: /d' "$UNZIPPED_OLD_CHANGES"
+# get new yml contents
+NEW_CHANGES=$(find main/ -type f -name "*.yml.gz")
+UNZIPPED_NEW_CHANGES="${NEW_CHANGES%.*}"
+gunzip "$NEW_CHANGES"
+sed -i.bak '/Time: /d' "$UNZIPPED_NEW_CHANGES"
+
+# Check to see if there are changes to push
+if ! diff "$UNZIPPED_OLD_CHANGES" "$UNZIPPED_NEW_CHANGES"; then
+  # there are changes! Clean up, then push the new metadata
+  rm -rf "$UNZIPPED_NEW_CHANGES"
+  mv "$UNZIPPED_NEW_CHANGES".bak "$UNZIPPED_NEW_CHANGES"
+  gzip "$UNZIPPED_NEW_CHANGES"
+  echo "Pushing new metadata to repository"
+  git checkout master
+  git add .
+  git commit -m "Automatic update of metadata"
+  git push --set-upstream origin master
+  echo "Push complete"
+else
+  echo "no changes present, nothing to push"
+fi
+
+

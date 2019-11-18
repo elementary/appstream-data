@@ -38,9 +38,13 @@ cat <<EOF > asgen-config.json
 }
 EOF
 
-appstream-generator process ${DIST}
+appstream-generator process "${DIST}"
 
-# Clear out the old data
+# Move the old main data to a backup location for diff checking
+mkdir -p /repo/diff/main
+cp /repo/pantheon-data/main/* /repo/diff/main
+
+# Clear out the rest of the old data
 rm -rf /repo/pantheon-data/main/*
 rm -f /repo/pantheon-data/extra/*.gz
 rm -f /repo/debian/appstream-data-pantheon-icons-hidpi.install
@@ -49,17 +53,17 @@ touch /repo/debian/appstream-data-pantheon-icons-hidpi.install
 touch /repo/debian/appstream-data-pantheon-icons.install
 
 # Copy in the new
-cp export/data/${DIST}/main/Components-amd64.yml.gz /repo/pantheon-data/main/pantheon_${DIST}-main_amd64.yml.gz
-for f in export/data/${DIST}/main/icons-*; do
+cp export/data/"${DIST}"/main/Components-amd64.yml.gz /repo/pantheon-data/main/pantheon_"${DIST}"-main_amd64.yml.gz
+for f in export/data/"${DIST}"/main/icons-*; do
 
   # Ignore icon archives with no icons
-  FILECOUNT=$(tar -tzvvf ${f} | grep -c ^-) || true
+  FILECOUNT=$(tar -tzvvf "${f}" | grep -c ^-) || true
   [[ $FILECOUNT -gt 0 ]] || continue
 
   # Strip a path like export/data/bionic/main/icons-128x128@2.tar.gz down to 128x128@2
-  OUTDIR=`basename ${f} .tar.gz | cut -d- -f2`
-  mkdir -p /repo/pantheon-data/main/icons/${OUTDIR}
-  tar -C /repo/pantheon-data/main/icons/${OUTDIR} -xf ${f}
+  OUTDIR=$(basename "${f}" .tar.gz | cut -d- -f2)
+  mkdir -p /repo/pantheon-data/main/icons/"${OUTDIR}"
+  tar -C /repo/pantheon-data/main/icons/"${OUTDIR}" -xf "${f}"
 
   # Add the extracted directory path to the debian install scripts (either HiDPI or not)
   if [[ $OUTDIR == *"@2" ]]; then
@@ -79,7 +83,7 @@ DATE=$(date -u +%Y%m%dT%H%M%S)
 touch "/repo/pantheon-data/extra/pantheon_${DIST}-extra_amd64.yml"
 
 # Construct the header
-cat <<EOF > /repo/pantheon-data/extra/pantheon_${DIST}-extra_amd64.yml
+cat <<EOF > /repo/pantheon-data/extra/pantheon_"${DIST}"-extra_amd64.yml
 ---
 File: DEP-11
 Version: '0.8'
@@ -92,9 +96,9 @@ EOF
 
 # Iterate all the files
 for file in $EXTR_FILES; do
-    echo "---" >> /repo/pantheon-data/extra/pantheon_${DIST}-extra_amd64.yml
-    cat "$file" >> /repo/pantheon-data/extra/pantheon_${DIST}-extra_amd64.yml
+    echo "---" >> /repo/pantheon-data/extra/pantheon_"${DIST}"-extra_amd64.yml
+    cat "$file" >> /repo/pantheon-data/extra/pantheon_"${DIST}"-extra_amd64.yml
 done
 
 # Compress the yml file to the expected gz file
-gzip /repo/pantheon-data/extra/pantheon_${DIST}-extra_amd64.yml
+gzip /repo/pantheon-data/extra/pantheon_"${DIST}"-extra_amd64.yml
