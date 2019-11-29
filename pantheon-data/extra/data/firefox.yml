@@ -1,5 +1,5 @@
 Type: desktop-application
-ID: firefox
+ID: org.mozilla.Firefox
 Package: firefox
 Name:
   C: Firefox
@@ -52,7 +52,7 @@ Keywords:
   - Internet
   - Browser
 Url:
-  homepage: https://www.mozilla.org/en-US/firefox/
+  homepage: https://www.mozilla.org/firefox/
 Icon:
   cached:
   - name: firefox.png
@@ -73,6 +73,6 @@ Provides:
   binaries:
    - firefox
 Custom:
-  x-appcenter-color-primary: '#003eaa'
+  x-appcenter-color-primary: '#20123A'
   x-appcenter-color-primary-text: '#fff'
 
