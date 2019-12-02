@@ -1,5 +1,5 @@
 Type: desktop-application
-ID: thunderbird
+ID: org.mozilla.Thunderbird
 Package: thunderbird
 Name:
   C: Thunderbird
@@ -33,5 +33,5 @@ Provides:
    - thunderbird
 Custom:
   x-appcenter-color-primary: '#eaeff2'
-  x-appcenter-color-primary-text: '#333'
+  x-appcenter-color-primary-text: '#484848'
 
