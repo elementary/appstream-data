@@ -53,7 +53,7 @@ touch /repo/debian/appstream-data-pantheon-icons-hidpi.install
 touch /repo/debian/appstream-data-pantheon-icons.install
 
 # Copy in the new
-cp export/data/"${DIST}"/main/Components-amd64.yml.gz /repo/pantheon-data/main/pantheon_"${DIST}"-main_amd64.yml.gz
+cp "export/data/${DIST}/main/Components-amd64.yml.gz" "/repo/pantheon-data/main/pantheon_${DIST}-main_amd64.yml.gz"
 for f in export/data/"${DIST}"/main/icons-*; do
 
   # Ignore icon archives with no icons
