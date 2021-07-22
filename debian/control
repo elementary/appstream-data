@@ -1,7 +1,7 @@
 Source: appstream-data-pantheon
 Section: misc
 Priority: optional
-Maintainer: Cody Garver <cody@elementary.io>
+Maintainer: elementary, Inc. <builds@elementary.io>
 Build-Depends: debhelper (>= 9), meson, wget
 Standards-Version: 3.9.6
 
