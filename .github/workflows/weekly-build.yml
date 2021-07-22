@@ -17,7 +17,7 @@ jobs:
     - name: Build metadata
       run: |
         ln -s $GITHUB_WORKSPACE /repo
-        ./build.sh bionic stable
+        ./build.sh focal stable
 
     - name: Push metadata
       run: |
