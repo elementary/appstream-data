@@ -42,7 +42,6 @@ appstream-generator process ${DIST}
 
 # Clear out the old data
 rm -rf /repo/pantheon-data/main/*
-rm -f /repo/pantheon-data/extra/*.gz
 rm -f /repo/debian/appstream-data-pantheon-icons-hidpi.install
 rm -f /repo/debian/appstream-data-pantheon-icons.install
 touch /repo/debian/appstream-data-pantheon-icons-hidpi.install
@@ -68,33 +67,3 @@ for f in export/data/${DIST}/main/icons-*; do
     echo "pantheon-data/main/icons/${OUTDIR}/* usr/share/app-info/icons/elementary-${CHANNEL}-${DIST}-main/$OUTDIR/" >> /repo/debian/appstream-data-pantheon-icons.install
   fi
 done
-
-echo "pantheon-data/extra/icons/64x64/* usr/share/app-info/icons/elementary-${DIST}-extra/64x64/" >> /repo/debian/appstream-data-pantheon-icons.install
-echo "pantheon-data/extra/icons/128x128/* usr/share/app-info/icons/elementary-${DIST}-extra/128x128/" >> /repo/debian/appstream-data-pantheon-icons.install
-
-EXTR_FILES="/repo/pantheon-data/extra/data/*"
-DATE=$(date -u +%Y%m%dT%H%M%S)
-
-# At this point we build the extra package
-touch "/repo/pantheon-data/extra/pantheon_${DIST}-extra_amd64.yml"
-
-# Construct the header
-cat <<EOF > /repo/pantheon-data/extra/pantheon_${DIST}-extra_amd64.yml
----
-File: DEP-11
-Version: '0.8'
-Origin: elementary-${DIST}-extra
-File: DEP-11
-MediaBaseUrl: https://appstream.elementary.io/daily/media/pool
-Priority: 13
-Time: ${DATE}
-EOF
-
-# Iterate all the files
-for file in $EXTR_FILES; do
-    echo "---" >> /repo/pantheon-data/extra/pantheon_${DIST}-extra_amd64.yml
-    cat "$file" >> /repo/pantheon-data/extra/pantheon_${DIST}-extra_amd64.yml
-done
-
-# Compress the yml file to the expected gz file
-gzip /repo/pantheon-data/extra/pantheon_${DIST}-extra_amd64.yml
