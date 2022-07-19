@@ -13,18 +13,29 @@ jobs:
       image: elementary/docker:juno-stable
 
     steps:
+    - name: Install git
+      run: |
+        add-apt-repository ppa:git-core/ppa -y
+        apt-get update
+        apt-get install git -y
+
     - name: Clone repository
       uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GIT_USER_TOKEN }}
 
     - name: Build metadata
       run: |
-        ln -s $GITHUB_WORKSPACE /repo
         ./build.sh focal stable
 
     - name: Push metadata
       run: |
-        ./commit.sh
+        git config --global --add safe.directory ${GITHUB_WORKSPACE}
+        git config --global user.name "${GIT_USER_NAME}"
+        git config --global user.email "${GIT_USER_EMAIL}"
+        git add .
+        git commit -m "Automatic update of metadata"
+        git push
       env:
-        GIT_USER_TOKEN: "${{ secrets.GIT_USER_TOKEN }}"
         GIT_USER_NAME: "elementaryBot"
         GIT_USER_EMAIL: "builds@elementary.io"
