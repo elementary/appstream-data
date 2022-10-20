@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: elementary/docker:juno-stable
+      image: elementary/docker:horus-stable
 
     steps:
     - name: Install git
