@@ -26,7 +26,7 @@ jobs:
 
     - name: Build metadata
       run: |
-        ./build.sh focal stable
+        ./build.sh jammy stable
 
     - name: Push metadata
       run: |
