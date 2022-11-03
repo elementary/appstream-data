@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: elementary/docker:juno-stable
+      image: elementary/docker:horus-stable
 
     steps:
     - name: Install git
@@ -26,7 +26,7 @@ jobs:
 
     - name: Build metadata
       run: |
-        ./build.sh focal stable
+        ./build.sh jammy stable
 
     - name: Push metadata
       run: |
