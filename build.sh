@@ -47,10 +47,12 @@ popd
 rm -rf pantheon-data/main/*
 rm -f debian/appstream-data-pantheon-icons-hidpi.install
 rm -f debian/appstream-data-pantheon-icons.install
+mkdir -p debian
 touch debian/appstream-data-pantheon-icons-hidpi.install
 touch debian/appstream-data-pantheon-icons.install
 
 # Copy in the new
+mkdir -p pantheon-data/main
 cp ${APPSTREAM_DIR}/export/data/${DIST}/main/Components-amd64.yml.gz pantheon-data/main/pantheon_${DIST}-main_amd64.yml.gz
 for f in ${APPSTREAM_DIR}/export/data/${DIST}/main/icons-*; do
 
