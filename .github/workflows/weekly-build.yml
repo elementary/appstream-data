@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/elementary/docker:horus-stable
+      image: ghcr.io/elementary/docker:circe-stable
 
     steps:
     - name: Install git
@@ -26,7 +26,7 @@ jobs:
 
     - name: Build metadata
       run: |
-        ./build.sh jammy stable
+        ./build.sh noble stable
 
     - name: Push metadata
       run: |
